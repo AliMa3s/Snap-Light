@@ -1,0 +1,154 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SnapLight - Fast Screenshot Tool</title>
+  <meta name="description" content="SnapLight is a fast screenshot and annotation app with pin-to-screen, OCR, blur, and instant copy/save." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-logo-wrap">
+        <img src="SnapShotLogo.png" alt="SnapLight logo" class="hero-logo" />
+      </div>
+      <p class="kicker">Windows Screenshot Utility</p>
+      <h1>SnapLight</h1>
+      <p class="subtitle">Capture, annotate, pin, and share screenshots in seconds.</p>
+      <div class="hero-actions">
+        <a href="https://github.com/your-username/snaplight/releases/latest" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download for Windows</a>
+        <a href="#features" class="btn btn-ghost">See Features</a>
+        <a href="#support" class="btn btn-ghost">Buy me a coffee</a>
+      </div>
+      <p class="small-note hero-note">Tip: replace the download link with your real releases page before publishing.</p>
+    </section>
+
+    <section id="features" class="section">
+      <h2>What You Can Do</h2>
+      <p class="section-intro">Everything needed for fast screenshot workflows in one lightweight app.</p>
+      <div class="feature-highlight">
+        <img src="SnapShotLogo.png" alt="SnapLight feature preview" />
+        <div>
+          <h3>Fast Flow</h3>
+          <p>Capture with shortcut, annotate in seconds, then copy/save/pin immediately.</p>
+          <div class="pill-row">
+            <span class="pill">Capture</span>
+            <span class="pill">Annotate</span>
+            <span class="pill">Text Extractor</span>
+            <span class="pill">Pin</span>
+            <span class="pill">Share</span>
+          </div>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>Quick Capture</h3>
+          <p>Select any area with a shortcut and capture instantly.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Built-In Annotation</h3>
+          <p>Use pen, shapes, arrows, text, blur, and highlighter tools.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Pin to Screen</h3>
+          <p>Pin a selected area as a floating sticker while you work.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Copy or Save</h3>
+          <p>Copy to clipboard fast or save as PNG, JPG, or WebP.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Text Extractor (OCR)</h3>
+          <p>Select an area and extract text instantly.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Color Picker</h3>
+          <p>Pick accurate colors directly from any screenshot area.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Startup Ready</h3>
+          <p>Optional launch on Windows startup so it is always ready.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <h2>Why SnapLight</h2>
+      <p class="center-text">Lightweight, focused, and fast. It stays out of your way until you need it.</p>
+    </section>
+
+    <section id="screenshots" class="section">
+      <h2>Screenshots</h2>
+      <p class="section-intro">Use next/previous to browse screenshots.</p>
+      <div class="carousel" data-images="screenshots/shot-1.png,screenshots/shot-2.png,screenshots/shot-3.png,screenshots/shot-4.png,screenshots/shot-5.png,screenshots/shot-6.png,screenshots/shot-7.png,screenshots/shot-8.png,screenshots/shot-9.png">
+        <figure class="carousel-frame">
+          <img id="carousel-image" src="screenshots/shot-1.png" alt="SnapLight screenshot" />
+        </figure>
+        <div class="carousel-controls">
+          <button id="carousel-prev" class="carousel-btn" type="button" aria-label="Previous screenshot">Previous</button>
+          <span id="carousel-counter" class="carousel-counter">1 / 9</span>
+          <button id="carousel-next" class="carousel-btn" type="button" aria-label="Next screenshot">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="support" class="section support">
+      <h2>Support The Project</h2>
+      <p>If SnapLight helps your workflow, you can support future updates.</p>
+      <a
+        class="btn btn-primary"
+        href="https://www.paypal.com/paypalme/alimaes"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Buy me a coffee
+      </a>
+      <p class="small-note">Tip: replace the PayPal link with your real PayPal.me URL before publishing.</p>
+    </section>
+  </main>
+
+  <footer class="footer">© 2026 SnapLight Team</footer>
+
+  <script>
+    (function () {
+      const carousel = document.querySelector(".carousel");
+      const imageEl = document.getElementById("carousel-image");
+      const prevBtn = document.getElementById("carousel-prev");
+      const nextBtn = document.getElementById("carousel-next");
+      const counterEl = document.getElementById("carousel-counter");
+
+      if (!carousel || !imageEl || !prevBtn || !nextBtn || !counterEl) return;
+
+      const images = (carousel.dataset.images || "")
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean);
+
+      if (!images.length) return;
+
+      let currentIndex = 0;
+
+      const render = () => {
+        imageEl.src = images[currentIndex];
+        counterEl.textContent = `${currentIndex + 1} / ${images.length}`;
+      };
+
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        render();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        render();
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
