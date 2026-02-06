@@ -24,6 +24,7 @@
         <a href="#features" class="btn btn-ghost">See Features</a>
         <a href="#support" class="btn btn-ghost">Buy me a coffee</a>
       </div>
+      <div id="download-counter" class="dl-counter">0</div>
       <p class="small-note hero-note">Tip: replace the download link with your real releases page before publishing.</p>
     </section>
 
@@ -148,6 +149,28 @@
       });
 
       render();
+    })();
+
+    (function () {
+      const counterEl = document.getElementById("download-counter");
+      if (!counterEl) return;
+
+      fetch("https://api.github.com/repos/AliMa3s/Snap-Light/releases/tags/SnapLight", {
+        headers: { Accept: "application/vnd.github+json" }
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("Failed to fetch release");
+          return res.json();
+        })
+        .then((release) => {
+          const assets = Array.isArray(release.assets) ? release.assets : [];
+          const installer = assets.find((asset) => asset.name === "SnapLight.Setup.1.0.0.exe");
+          const count = installer?.download_count ?? 0;
+          counterEl.textContent = new Intl.NumberFormat().format(count);
+        })
+        .catch(() => {
+          counterEl.textContent = "0";
+        });
     })();
   </script>
 </body>

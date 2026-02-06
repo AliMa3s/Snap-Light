@@ -87,6 +87,15 @@ h1 {
   margin-top: 10px;
 }
 
+.dl-counter {
+  margin-top: 10px;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255, 212, 59, 0.95);
+  letter-spacing: 0.08em;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
