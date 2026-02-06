@@ -163,7 +163,7 @@
         })
         .then((release) => {
           const assets = Array.isArray(release.assets) ? release.assets : [];
-          const installer = assets.find((asset) => asset.name === "SnapLight.Setup.1.0.0.exe");
+          const installer = assets.find((asset) => asset.name === "SnapLight.Setup.1.0.0.zip");
           const count = installer?.download_count ?? 0;
           counterEl.textContent = new Intl.NumberFormat().format(count);
         })
