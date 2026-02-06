@@ -6,9 +6,7 @@ Standalone static site for SnapLight.
 - `index.html`
 - `styles.css`
 - `SnapShotLogo.png`
-- `screenshots/screenshot-1.svg`
-- `screenshots/screenshot-2.svg`
-- `screenshots/screenshot-3.svg`
+
 
 ## Publish
 1. Move this folder into a separate public repository.
