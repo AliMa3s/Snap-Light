@@ -1,4 +1,6 @@
-﻿# SnapLight One-Pager
+﻿# SnapLight Website
+
+https://alima3s.github.io/Snap-Light/
 
 Standalone static site for SnapLight.
 
